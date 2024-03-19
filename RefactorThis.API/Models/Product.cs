@@ -2,7 +2,7 @@
 using System.Text.Json.Serialization;
 using Microsoft.Data.Sqlite;
 
-namespace RefactorThis.Models {
+namespace RefactorThis.API.Models {
     public class Product
     {
         public Guid Id { get; set; }
@@ -26,7 +26,7 @@ namespace RefactorThis.Models {
         public Product(Guid id)
         {
             IsNew = true;
-            var conn = Helpres.NewConnection<SqliteConnection>();
+            var conn = Helpers.NewConnection<SqliteConnection>();
             conn.Open();
             var cmd = conn.CreateCommand();
             cmd.CommandText = $"select * from Products where id = '{id}' collate nocase";
@@ -45,7 +45,7 @@ namespace RefactorThis.Models {
 
         public void Save()
         {
-            var conn = Helpres.NewConnection<SqliteConnection>();
+            var conn = Helpers.NewConnection<SqliteConnection>();
             conn.Open();
             var cmd = conn.CreateCommand();
 
@@ -62,7 +62,7 @@ namespace RefactorThis.Models {
             foreach (var option in new ProductOptions(Id).Items)
                 option.Delete();
 
-            var conn = Helpres.NewConnection<SqliteConnection>();
+            var conn = Helpers.NewConnection<SqliteConnection>();
             conn.Open();
             var cmd = conn.CreateCommand();
 

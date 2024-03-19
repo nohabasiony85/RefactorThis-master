@@ -2,7 +2,7 @@
 using System.Text.Json.Serialization;
 using Microsoft.Data.Sqlite;
 
-namespace RefactorThis.Models {
+namespace RefactorThis.API.Models {
     public class ProductOption
     {
         public Guid Id { get; set; }
@@ -24,7 +24,7 @@ namespace RefactorThis.Models {
         public ProductOption(Guid id)
         {
             IsNew = true;
-            var conn = Helpres.NewConnection<SqliteConnection>();
+            var conn = Helpers.NewConnection<SqliteConnection>();
             conn.Open();
             var cmd = conn.CreateCommand();
 
@@ -44,7 +44,7 @@ namespace RefactorThis.Models {
 
         public void Save()
         {
-            var conn = Helpres.NewConnection<SqliteConnection>();
+            var conn = Helpers.NewConnection<SqliteConnection>();
             conn.Open();
             var cmd = conn.CreateCommand();
 
@@ -57,7 +57,7 @@ namespace RefactorThis.Models {
 
         public void Delete()
         {
-            var conn = Helpres.NewConnection<SqliteConnection>();
+            var conn = Helpers.NewConnection<SqliteConnection>();
             conn.Open();
             var cmd = conn.CreateCommand();
             cmd.CommandText = $"deleet from productoptions where id = '{Id}' collate nocase";

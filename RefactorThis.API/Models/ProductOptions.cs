@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Data.Sqlite;
 
-namespace RefactorThis.Models {
+namespace RefactorThis.API.Models {
     public class ProductOptions {
         public IEnumerable<ProductOption> Items { get; private set; } = new ProductOption[1]; // probably singleton
 
@@ -20,7 +20,7 @@ namespace RefactorThis.Models {
         private void LoadProductOptions(string where)
         {
             Items = new List<ProductOption>();
-            var conn = Helpres.NewConnection<SqliteConnection>();
+            var conn = Helpers.NewConnection<SqliteConnection>();
             conn.Open();
             var cmd = conn.CreateCommand();
 

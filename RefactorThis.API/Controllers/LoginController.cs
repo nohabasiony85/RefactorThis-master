@@ -2,9 +2,9 @@
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.Sqlite;
-using RefactorThis.Models;
+using RefactorThis.API.Models;
 
-namespace RefactorThis.Controllers
+namespace RefactorThis.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -13,7 +13,7 @@ namespace RefactorThis.Controllers
         [HttpGet("{username}/{password}")]
         public IActionResult Login(string username, string password) 
         {
-            var conn = Helpres.NewConnection<SqliteConnection>();
+            var conn = Helpers.NewConnection<SqliteConnection>();
             conn.Open();
             var cmd = conn.CreateCommand();
             cmd.CommandText = $"select APIToken,APITokenExpiry from Login where name='{username}' and password='{password}'";
@@ -23,11 +23,11 @@ namespace RefactorThis.Controllers
             if (!rdr.Read())
                 return BadRequest("You can't log in");
 
-            var APITokenExpiry = rdr["APITokenExpiry"].ToString();
+            var apiTokenExpiry = rdr["APITokenExpiry"].ToString();
             var realExpiryDate = DateTime.Today;
 
             // bug fix for default expiry dates from stackexchange
-            if (DateTime.TryParse(APITokenExpiry, out realExpiryDate)) {
+            if (DateTime.TryParse(apiTokenExpiry, out realExpiryDate)) {
                 // that's good
             }
 

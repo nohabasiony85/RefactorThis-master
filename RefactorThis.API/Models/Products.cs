@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
 
-namespace RefactorThis.Models
+namespace RefactorThis.API.Models
 {
     public class Products
     {
@@ -29,7 +29,7 @@ namespace RefactorThis.Models
         private void LoadProducts(string where)
         {
             Items = new List<Product>();
-            var conn = Helpres.NewConnection<SqliteConnection>();
+            var conn = Helpers.NewConnection<SqliteConnection>();
             conn.Open();
             var cmd = conn.CreateCommand();
             cmd.CommandText = $"select id from Products {where}";

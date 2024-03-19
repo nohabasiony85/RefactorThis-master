@@ -1,8 +1,8 @@
 ﻿using System.Data.Common;
 
-namespace RefactorThis.Models
+namespace RefactorThis.API.Models
 {
-    public class Helpres
+    public class Helpers
     {
         //private const string ConnectionString = "Data Source=App_Data/products.db;Password=changemelat3r";
         private const string ConnectionString = "Data Source=App_Data/products.db"; // password doesn't work?? 
