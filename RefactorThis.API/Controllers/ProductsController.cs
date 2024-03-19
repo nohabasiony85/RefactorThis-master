@@ -2,6 +2,8 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RefactorThis.Domain.Products.CreateProductCommand;
+using RefactorThis.Domain.Products.DeleteProductCommand;
+using RefactorThis.Domain.Products.UpdateProductCommand;
 
 namespace RefactorThis.Api.Controllers
 {
@@ -41,6 +43,20 @@ namespace RefactorThis.Api.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Post(CreateProductCommand command, CancellationToken token)
+        {
+            var response = await mediator.Send(command, token);
+            return Ok(response);
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> Update(UpdateProductCommand command, CancellationToken token)
+        {
+            var response = await mediator.Send(command, token);
+            return Ok(response);
+        }
+        
+        [HttpDelete]
+        public async Task<IActionResult> Delete(DeleteProductCommand command, CancellationToken token)
         {
             var response = await mediator.Send(command, token);
             return Ok(response);

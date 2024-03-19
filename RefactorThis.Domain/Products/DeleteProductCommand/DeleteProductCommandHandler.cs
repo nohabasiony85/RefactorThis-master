@@ -2,9 +2,9 @@ using RefactorThis.Domain.Abstractions;
 
 namespace RefactorThis.Domain.Products.DeleteProductCommand;
 
-public class CreateProductCommandHandler : ICommandHandler<Products.CreateProductCommand.CreateProductCommand, Guid>
+public class DeleteProductCommandHandler : ICommandHandler<DeleteProductCommand, Guid>
 {
-    public Task<Guid> Handle(Products.CreateProductCommand.CreateProductCommand request, CancellationToken cancellationToken)
+    public Task<Guid> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }
