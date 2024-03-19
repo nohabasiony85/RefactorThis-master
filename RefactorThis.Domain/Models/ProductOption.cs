@@ -1,8 +1,7 @@
-﻿using System;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using Microsoft.Data.Sqlite;
 
-namespace RefactorThis.API.Models {
+namespace RefactorThis.Domain.Models {
     public class ProductOption
     {
         public Guid Id { get; set; }

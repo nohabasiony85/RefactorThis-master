@@ -1,9 +1,8 @@
-﻿using System;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using Microsoft.AspNetCore.Mvc;
-using RefactorThis.API.Models;
+using RefactorThis.Domain.Models;
 
-namespace RefactorThis.API.Controllers
+namespace RefactorThis.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -4,6 +4,7 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
         <LangVersion>12</LangVersion>
+        <RootNamespace>RefactorThis.API</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

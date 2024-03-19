@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Data.Sqlite;
+﻿using Microsoft.Data.Sqlite;
 
-namespace RefactorThis.API.Models {
+namespace RefactorThis.Domain.Models {
     public class ProductOptions {
         public IEnumerable<ProductOption> Items { get; private set; } = new ProductOption[1]; // probably singleton
 

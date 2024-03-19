@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.Sqlite;
-using RefactorThis.API.Models;
+using RefactorThis.Domain.Models;
 
-namespace RefactorThis.API.Controllers
+namespace RefactorThis.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -31,7 +30,7 @@ namespace RefactorThis.API.Controllers
             }
 
             if (DateTime.Now < realExpiryDate) {
-                return Accepted("Youare logged in and can use the API");
+                return Accepted("You are logged in and can use the API");
             }
             else 
             {

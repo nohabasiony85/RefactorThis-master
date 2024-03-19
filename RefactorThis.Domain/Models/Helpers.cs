@@ -1,6 +1,6 @@
 ﻿using System.Data.Common;
 
-namespace RefactorThis.API.Models
+namespace RefactorThis.Domain.Models
 {
     public class Helpers
     {
