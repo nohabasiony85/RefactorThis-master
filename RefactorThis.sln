@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefactorThis", "RefactorThis.csproj", "{529176B5-F038-4745-A9B8-E87E9D226F6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefactorThis.API", "RefactorThis.API\RefactorThis.API.csproj", "{F2115696-3E1E-4380-A31B-3245BA2799C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +8,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{529176B5-F038-4745-A9B8-E87E9D226F6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{529176B5-F038-4745-A9B8-E87E9D226F6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{529176B5-F038-4745-A9B8-E87E9D226F6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{529176B5-F038-4745-A9B8-E87E9D226F6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2115696-3E1E-4380-A31B-3245BA2799C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2115696-3E1E-4380-A31B-3245BA2799C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2115696-3E1E-4380-A31B-3245BA2799C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2115696-3E1E-4380-A31B-3245BA2799C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
