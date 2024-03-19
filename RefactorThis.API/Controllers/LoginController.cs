@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Security.Cryptography;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.Sqlite;
 using RefactorThis.API.Models;
 
-namespace RefactorThis.Api.Controllers
+namespace RefactorThis.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
