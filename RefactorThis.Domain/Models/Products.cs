@@ -2,7 +2,7 @@
 {
     public class Products
     {
-        public List<Product> Items { get; private set; }
+        //public List<Product> Items { get; private set; }
 
         // public Products(string name)
         // {
