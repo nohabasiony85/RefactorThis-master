@@ -48,7 +48,7 @@ namespace RefactorThis.Api.Controllers
             return Ok(response);
         }
         
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> Update(UpdateProductCommand command, CancellationToken token)
         {
             var response = await mediator.Send(command, token);
