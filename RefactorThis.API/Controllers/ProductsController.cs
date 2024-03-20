@@ -1,8 +1,9 @@
-﻿using System.Security.Cryptography;
+﻿//using System.Security.Cryptography;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RefactorThis.Domain.Products.CreateProductCommand;
 using RefactorThis.Domain.Products.DeleteProductCommand;
+using RefactorThis.Domain.Products.GetProductQuery;
 using RefactorThis.Domain.Products.UpdateProductCommand;
 
 namespace RefactorThis.Api.Controllers
@@ -41,6 +42,13 @@ namespace RefactorThis.Api.Controllers
         //     }
         // }
 
+        [HttpGet]
+        public async Task<IActionResult> Get(GetProductQuery query, CancellationToken token)
+        {
+            var response = await mediator.Send(query, token);
+            return Ok(response);
+        }
+        
         [HttpPost]
         public async Task<IActionResult> Post(CreateProductCommand command, CancellationToken token)
         {
