@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using RefactorThis.Domain.Products.CreateProductCommand;
 using RefactorThis.Domain.Products.DeleteProductCommand;
 using RefactorThis.Domain.Products.GetProductQuery;
+using RefactorThis.Domain.Products.GetProductsByNameQuery;
 using RefactorThis.Domain.Products.UpdateProductCommand;
 
 namespace RefactorThis.Api.Controllers
@@ -42,31 +43,42 @@ namespace RefactorThis.Api.Controllers
         //     }
         // }
 
-        [HttpGet]
-        public async Task<IActionResult> Get(GetProductQuery query, CancellationToken token)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(Guid id, CancellationToken cancellationToken)
         {
-            var response = await mediator.Send(query, token);
+            var query = new GetProductQuery(id);
+            var response = await mediator.Send(query, cancellationToken);//Should we have here response?
+            
             return Ok(response);
         }
-        
-        [HttpPost]
-        public async Task<IActionResult> Post(CreateProductCommand command, CancellationToken token)
+
+        [HttpGet("{name}")]
+        public async Task<IActionResult> GetAllByName(string name, CancellationToken cancellationToken)
         {
-            var response = await mediator.Send(command, token);
+            var query = new GetProductsByNameQuery(name);
+
+            var response = await mediator.Send(query, cancellationToken);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(CreateProductCommand command, CancellationToken cancellationToken)
+        {
+            var response = await mediator.Send(command, cancellationToken);
             return Ok(response);
         }
         
         [HttpPut]
-        public async Task<IActionResult> Update(UpdateProductCommand command, CancellationToken token)
+        public async Task<IActionResult> Update(UpdateProductCommand command, CancellationToken cancellationToken)
         {
-            var response = await mediator.Send(command, token);
+            var response = await mediator.Send(command, cancellationToken);
             return Ok(response);
         }
         
         [HttpDelete]
-        public async Task<IActionResult> Delete(DeleteProductCommand command, CancellationToken token)
+        public async Task<IActionResult> Delete(DeleteProductCommand command, CancellationToken cancellationToken)
         {
-            var response = await mediator.Send(command, token);
+            var response = await mediator.Send(command, cancellationToken);
             return Ok(response);
         }
 

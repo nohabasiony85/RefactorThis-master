@@ -3,4 +3,4 @@ using RefactorThis.Domain.Models;
 
 namespace RefactorThis.Domain.Products.GetProductQuery;
 
-public record GetProductQuery(int productId) : IQuery<Product>;
+public record GetProductQuery(Guid ProductId) : IQuery<Product>;
