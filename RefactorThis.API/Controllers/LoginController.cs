@@ -22,10 +22,9 @@ namespace RefactorThis.Api.Controllers
                 return BadRequest("You can't log in");
 
             var apiTokenExpiry = rdr["APITokenExpiry"].ToString();
-            var realExpiryDate = DateTime.Today;
 
             // bug fix for default expiry dates from stackexchange
-            if (DateTime.TryParse(apiTokenExpiry, out realExpiryDate)) {
+            if (DateTime.TryParse(apiTokenExpiry, out var realExpiryDate)) {
                 // that's good
             }
 
