@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefactorThis.Domain", "Refa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefactorThis.Api", "RefactorThis.Api\RefactorThis.Api.csproj", "{E3260D4A-1775-4C76-A927-249E4D8225E4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{253D8465-C3CA-4F89-8F51-887F67BE5C33}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{E3260D4A-1775-4C76-A927-249E4D8225E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3260D4A-1775-4C76-A927-249E4D8225E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3260D4A-1775-4C76-A927-249E4D8225E4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E3260D4A-1775-4C76-A927-249E4D8225E4} = {253D8465-C3CA-4F89-8F51-887F67BE5C33}
+		{13BF731E-F33A-438E-843C-4F7194F8FD08} = {253D8465-C3CA-4F89-8F51-887F67BE5C33}
 	EndGlobalSection
 EndGlobal
