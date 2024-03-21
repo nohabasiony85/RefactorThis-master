@@ -1,5 +1,4 @@
 ﻿//using System.Security.Cryptography;
-
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RefactorThis.Domain.Products.CreateProductCommand;
@@ -14,6 +13,51 @@ namespace RefactorThis.Api.Controllers
     [ApiController]
     public class ProductsController(IMediator mediator) : ControllerBase
     {
+        [HttpGet("{name}")]
+        public async Task<IActionResult> GetAllByName(string name, CancellationToken cancellationToken)
+        {
+            var query = new GetProductsByNameQuery(name);
+
+            var response = await mediator.Send(query, cancellationToken);
+            return Ok(response);
+        }
+
+        [HttpGet("{id:guid}")]
+        public async Task<IActionResult> Get(Guid id, CancellationToken cancellationToken)
+        {
+            var query = new GetProductQuery(id);
+            var response = await mediator.Send(query, cancellationToken); //Should we have here response?
+
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(CreateProductRequest request, CancellationToken cancellationToken)
+        {
+            var command =
+                new CreateProductCommand(request.Name, request.Description, request.Price, request.DeliveryPrice);
+
+            var response = await mediator.Send(command, cancellationToken);
+
+            return Ok(response);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(UpdateProductCommand command, CancellationToken cancellationToken)
+        {
+            var response = await mediator.Send(command, cancellationToken);
+            return Ok(response);
+        }
+
+
+        [HttpDelete("{id:guid}")]
+        public async Task<IActionResult> Delete(Guid id, DeleteProductCommand command,
+            CancellationToken cancellationToken)
+        {
+            var response = await mediator.Send(command, cancellationToken);
+            return Ok(response);
+        }
+
         // [HttpGet("test")]
         // public Products GetTest()
         // {
@@ -43,50 +87,6 @@ namespace RefactorThis.Api.Controllers
         //         return NotFound();
         //     }
         // }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(Guid id, CancellationToken cancellationToken)
-        {
-            var query = new GetProductQuery(id);
-            var response = await mediator.Send(query, cancellationToken);//Should we have here response?
-            
-            return Ok(response);
-        }
-
-        [HttpGet("{name}")]
-        public async Task<IActionResult> GetAllByName(string name, CancellationToken cancellationToken)
-        {
-            var query = new GetProductsByNameQuery(name);
-
-            var response = await mediator.Send(query, cancellationToken);
-            return Ok(response);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Post(CreateProductRequest request, CancellationToken cancellationToken)
-        {
-            var command =
-                new CreateProductCommand(request.Name, request.Description, request.Price, request.DeliveryPrice);
-            
-            var response = await mediator.Send(command, cancellationToken);
-            
-            return Ok(response);
-          
-        }
-        
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(UpdateProductCommand command, CancellationToken cancellationToken)
-        {
-            var response = await mediator.Send(command, cancellationToken);
-            return Ok(response);
-        }
-        
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(DeleteProductCommand command, CancellationToken cancellationToken)
-        {
-            var response = await mediator.Send(command, cancellationToken);
-            return Ok(response);
-        }
 
         // [HttpPut("{id}")]
         // public void Update(Guid id, Product product)
