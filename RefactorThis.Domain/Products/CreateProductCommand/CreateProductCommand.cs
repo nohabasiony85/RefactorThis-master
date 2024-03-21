@@ -1,5 +1,5 @@
-using RefactorThis.Domain.Abstractions;
+using MediatR;
 
 namespace RefactorThis.Domain.Products.CreateProductCommand;
 
-public record CreateProductCommand() : ICommand<Guid>;
+public record CreateProductCommand(string RequestName, string RequestDescription, decimal RequestPrice, decimal RequestDeliveryPrice) : IRequest<CreateProductResponse>;

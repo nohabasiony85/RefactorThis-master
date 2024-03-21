@@ -1,4 +1,5 @@
 ﻿//using System.Security.Cryptography;
+
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RefactorThis.Domain.Products.CreateProductCommand;
@@ -62,20 +63,25 @@ namespace RefactorThis.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(CreateProductCommand command, CancellationToken cancellationToken)
+        public async Task<IActionResult> Post(CreateProductRequest request, CancellationToken cancellationToken)
         {
+            var command =
+                new CreateProductCommand(request.Name, request.Description, request.Price, request.DeliveryPrice);
+            
             var response = await mediator.Send(command, cancellationToken);
+            
             return Ok(response);
+          
         }
         
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Update(UpdateProductCommand command, CancellationToken cancellationToken)
         {
             var response = await mediator.Send(command, cancellationToken);
             return Ok(response);
         }
         
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(DeleteProductCommand command, CancellationToken cancellationToken)
         {
             var response = await mediator.Send(command, cancellationToken);
