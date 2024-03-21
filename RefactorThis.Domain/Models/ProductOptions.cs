@@ -2,7 +2,7 @@
 
 namespace RefactorThis.Domain.Models {
     public class ProductOptions {
-        public IEnumerable<ProductOption> Items { get; private set; } = new ProductOption[1]; // probably singleton
+        //public IEnumerable<ProductOption> Items { get; private set; } = new ProductOption[1]; // probably singleton
 
         // public ProductOptions()
         // {
