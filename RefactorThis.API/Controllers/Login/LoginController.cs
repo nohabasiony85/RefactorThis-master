@@ -6,7 +6,7 @@ namespace RefactorThis.Api.Controllers.Login
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoginController (IMediator mediator): ControllerBase 
+    public class LoginController(IMediator mediator) : ControllerBase
     {
         [HttpGet("{username}/{password}")]
         public async Task<IActionResult> Login(LoginRequest request, CancellationToken cancellationToken)
@@ -44,6 +44,5 @@ namespace RefactorThis.Api.Controllers.Login
         //     {
         //         return BadRequest("Your api token has expired, please ask Reliability for a new one to be assigned to you");
         //     }
-        }
     }
 }
