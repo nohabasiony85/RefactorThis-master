@@ -1,7 +1,7 @@
 using RefactorThis.Domain.Abstractions;
 using RefactorThis.Domain.Models;
 
-namespace RefactorThis.Domain.Products.GetProductQuery;
+namespace RefactorThis.Application.Products.GetProductQuery;
 
 public class GetProductQueryHandler : IQueryHandler<GetProductQuery, Product>
 {

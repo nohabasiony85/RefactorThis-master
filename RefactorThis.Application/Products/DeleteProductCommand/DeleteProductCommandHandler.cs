@@ -1,6 +1,6 @@
 using RefactorThis.Domain.Abstractions;
 
-namespace RefactorThis.Domain.Products.DeleteProductCommand;
+namespace RefactorThis.Application.Products.DeleteProductCommand;
 
 public class DeleteProductCommandHandler : ICommandHandler<DeleteProductCommand, Guid>
 {

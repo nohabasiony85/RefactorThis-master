@@ -1,5 +1,5 @@
 using RefactorThis.Domain.Abstractions;
 
-namespace RefactorThis.Domain.Products.UpdateProductCommand;
+namespace RefactorThis.Application.Products.UpdateProductCommand;
 
 public record UpdateProductCommand() : ICommand<Guid>;
