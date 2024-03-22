@@ -1,6 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
-
-namespace RefactorThis.Domain.Models {
+﻿namespace RefactorThis.Domain.Entities {
     public class ProductOptions {
         //public IEnumerable<ProductOption> Items { get; private set; } = new ProductOption[1]; // probably singleton
 

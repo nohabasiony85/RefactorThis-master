@@ -1,6 +1,16 @@
-﻿namespace RefactorThis.Domain.Models {
-    public class ProductOption
+﻿using RefactorThis.Domain.Abstractions;
+
+namespace RefactorThis.Domain.Entities {
+    public class ProductOption : Entity
     {
+        public ProductOption(Guid id, Guid productId, string name, string description): base(id)
+        {
+            Id = id;
+            ProductId = productId;
+            Name = name;
+            Description = description;
+        }
+
         public Guid Id { get; set; }
 
         public Guid ProductId { get; set; }

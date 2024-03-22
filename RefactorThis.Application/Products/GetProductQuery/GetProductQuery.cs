@@ -1,5 +1,5 @@
 using RefactorThis.Application.Abstractions;
-using RefactorThis.Domain.Models;
+using RefactorThis.Domain.Entities;
 
 namespace RefactorThis.Application.Products.GetProductQuery;
 

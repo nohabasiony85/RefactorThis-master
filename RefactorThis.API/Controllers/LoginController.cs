@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.Sqlite;
-using RefactorThis.Domain.Models;
+using RefactorThis.Domain.Entities;
 
 namespace RefactorThis.Api.Controllers
 {

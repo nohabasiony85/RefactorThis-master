@@ -1,15 +1,18 @@
-﻿namespace RefactorThis.Domain.Models {
-    public class Product
+﻿using RefactorThis.Domain.Abstractions;
+
+namespace RefactorThis.Domain.Entities {
+    public class Product(Guid id, string name, string description, decimal price, decimal deliveryPrice)
+        : Entity(id)
     {
         public Guid Id { get; set; }
 
-        public required string Name { get; init; }
+        public required string Name { get; init; } = name;
 
-        public required string Description { get; init; }
+        public required string Description { get; init; } = description;
 
-        public decimal Price { get; init; }
+        public decimal Price { get; init; } = price;
 
-        public decimal DeliveryPrice { get; init; }
+        public decimal DeliveryPrice { get; init; } = deliveryPrice;
 
         // [JsonIgnore] public bool IsNew { get; }
 

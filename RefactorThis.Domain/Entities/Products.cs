@@ -1,4 +1,4 @@
-﻿namespace RefactorThis.Domain.Models
+﻿namespace RefactorThis.Domain.Entities
 {
     public class Products
     {
