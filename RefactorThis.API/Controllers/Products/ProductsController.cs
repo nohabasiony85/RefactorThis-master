@@ -2,11 +2,11 @@
 
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using RefactorThis.Application.CreateProductCommand;
-using RefactorThis.Domain.Products.DeleteProductCommand;
-using RefactorThis.Domain.Products.GetProductQuery;
-using RefactorThis.Domain.Products.GetProductsByNameQuery;
-using RefactorThis.Domain.Products.UpdateProductCommand;
+using RefactorThis.Application.Products.CreateProductCommand;
+using RefactorThis.Application.Products.DeleteProductCommand;
+using RefactorThis.Application.Products.GetProductQuery;
+using RefactorThis.Application.Products.GetProductsByNameQuery;
+using RefactorThis.Application.Products.UpdateProductCommand;
 
 namespace RefactorThis.Api.Controllers.Products
 {

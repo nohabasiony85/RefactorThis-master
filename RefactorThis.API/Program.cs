@@ -1,8 +1,7 @@
 using FluentValidation;
 using RefactorThis.Api.Middlewares;
 using RefactorThis.Domain.Validators;
-using RefactorThis.Domain.Validators.Product;
-using RefactorThis.Application.CreateProductCommand;
+using RefactorThis.Application.Products.CreateProductCommand;
 
 var builder = WebApplication.CreateBuilder(args);
 
