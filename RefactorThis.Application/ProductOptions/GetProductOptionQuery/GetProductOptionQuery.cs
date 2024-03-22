@@ -1,4 +1,4 @@
-using RefactorThis.Domain.Abstractions;
+using RefactorThis.Application.Abstractions;
 using RefactorThis.Domain.Models;
 
 namespace RefactorThis.Application.ProductOptions.GetProductOptionQuery;

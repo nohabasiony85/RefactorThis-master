@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace RefactorThis.Domain.Abstractions;
+namespace RefactorThis.Application.Abstractions;
 
 public interface ICommandHandler<TCommand> : IRequestHandler<TCommand>
     where TCommand : ICommand

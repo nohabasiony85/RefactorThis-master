@@ -1,7 +1,6 @@
 using FluentValidation;
-using RefactorThis.Domain.ProductOptions.CreateProductOptionCommand;
 
-namespace RefactorThis.Domain.Validators.ProductOption;
+namespace RefactorThis.Application.ProductOptions.CreateProductOptionCommand;
 
 public class CreateProductOptionCommandValidator :AbstractValidator<CreateProductOptionCommand>
 {

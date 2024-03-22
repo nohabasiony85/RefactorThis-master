@@ -1,4 +1,4 @@
-using RefactorThis.Domain.Abstractions;
+using RefactorThis.Application.Abstractions;
 
 namespace RefactorThis.Application.Products.CreateProductCommand;
 

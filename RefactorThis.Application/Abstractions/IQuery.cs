@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace RefactorThis.Domain.Abstractions;
+namespace RefactorThis.Application.Abstractions;
 
 public interface IQuery<TResponse> : IRequest<TResponse>
 {
