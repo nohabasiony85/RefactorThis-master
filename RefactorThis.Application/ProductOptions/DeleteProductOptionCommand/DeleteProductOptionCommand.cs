@@ -1,5 +1,5 @@
 using RefactorThis.Domain.Abstractions;
 
-namespace RefactorThis.Domain.ProductOptions.DeleteProductOptionCommand;
+namespace RefactorThis.Application.ProductOptions.DeleteProductOptionCommand;
 
 public record DeleteProductOptionCommand() : ICommand<Guid>;

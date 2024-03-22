@@ -1,6 +1,6 @@
 using RefactorThis.Domain.Abstractions;
 
-namespace RefactorThis.Domain.ProductOptions.UpdateProductOptionCommand;
+namespace RefactorThis.Application.ProductOptions.UpdateProductOptionCommand;
 
 public class UpdateProductOptionCommandHandler : ICommandHandler<UpdateProductOptionCommand, Guid>
 {
