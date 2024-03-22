@@ -1,5 +1,5 @@
 using RefactorThis.Domain.Abstractions;
 
-namespace RefactorThis.Domain.Products.CreateProductCommand;
+namespace RefactorThis.Api.Controllers.Products;
 
 public record CreateProductRequest(string Name, string Description ,decimal Price , decimal DeliveryPrice) : ICommand<Guid>;

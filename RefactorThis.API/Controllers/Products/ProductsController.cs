@@ -1,13 +1,14 @@
 ﻿//using System.Security.Cryptography;
+
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using RefactorThis.Domain.Products.CreateProductCommand;
+using RefactorThis.Application.CreateProductCommand;
 using RefactorThis.Domain.Products.DeleteProductCommand;
 using RefactorThis.Domain.Products.GetProductQuery;
 using RefactorThis.Domain.Products.GetProductsByNameQuery;
 using RefactorThis.Domain.Products.UpdateProductCommand;
 
-namespace RefactorThis.Api.Controllers
+namespace RefactorThis.Api.Controllers.Products
 {
     [Route("api/[controller]")]
     [ApiController]

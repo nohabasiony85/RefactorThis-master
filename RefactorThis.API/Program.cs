@@ -1,7 +1,8 @@
+using FluentValidation;
 using RefactorThis.Api.Middlewares;
-using RefactorThis.Domain.Products.CreateProductCommand;
 using RefactorThis.Domain.Validators;
 using RefactorThis.Domain.Validators.Product;
+using RefactorThis.Application.CreateProductCommand;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,7 @@ builder.Services.AddMediatR(configuration =>
     configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
 });
 
-// builder.Services.AddValidatorsFromAssembly(typeof(CreateProductCommandValidator).Assembly);
+builder.Services.AddValidatorsFromAssembly(typeof(CreateProductCommandValidator).Assembly);
 
 
 var app = builder.Build();
