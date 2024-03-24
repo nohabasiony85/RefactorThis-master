@@ -39,8 +39,8 @@ namespace RefactorThis.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(CreateProductCommand command, CancellationToken cancellationToken)
         {
-           await mediator.Send(command, cancellationToken);
-           return Created();
+            var result  = await mediator.Send(command, cancellationToken);
+            return result ? Created() : NotFound();
         }
 
         [HttpPut("{id}")]
@@ -79,64 +79,8 @@ namespace RefactorThis.Api.Controllers
         public async Task<IActionResult> DeleteOption(Guid productId, Guid id, CancellationToken cancellationToken)
         {
             var command = new DeleteProductOptionCommand(id, productId);
-            await mediator.Send(command, cancellationToken);
-            return NoContent();
+            var result = await mediator.Send(command, cancellationToken);
+            return result ? Ok() : NotFound();
         }
-
-        // [HttpPost]
-        // public IActionResult Post(Product product)
-        // {
-        //     if (product.IsNew) 
-        //     {
-        //         product.Save();
-        //         return Accepted();
-        //     }
-        //     else {
-        //         return NotFound();
-        //     }
-        // }
-
-        // [HttpPut("{id}")]
-        // public void Update(Guid id, Product product)
-        // {
-        //     var orig = new Product(id)
-        //     {
-        //         Name = product.Name,
-        //         Description = product.Description,
-        //         Price = product.Price,
-        //         DeliveryPrice = product.DeliveryPrice
-        //     };
-        //
-        //     if (!orig.IsNew)
-        //         orig.Save();
-        // }
-
-        // [HttpDelete("{id}")]
-        // public void Delete(Guid id) {
-        //     // Ignore the seed data
-        //     if (id == new Guid("3d81192d-773d-4f09-866b-ab48f9674396")) return;
-        //     var product = new Product(id);
-        //     product.Delete();
-        // }
-
-        // [HttpGet("{productId}/options")]
-        // public ProductOptions GetOptions(Guid productId)
-        // {
-        //     return new ProductOptions(productId);
-        // }
-
-        // [HttpPost("{productId}/options")]
-        // public void CreateOption(Guid productId, ProductOption option)
-        // {
-        //     option.ProductId = productId;
-        //     option.Save();
-        // }
-        //
-        // [HttpDelete("{productId}/options/{id}")]
-        // public void DeleteOption(Guid productId, Guid id)
-        // {
-        //     var opt = new ProductOption(productId);
-        //     opt.Delete();
-        // }
     }
 }
