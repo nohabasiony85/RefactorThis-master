@@ -10,6 +10,7 @@ using RefactorThis.Application.Products.DeleteProductCommand;
 using RefactorThis.Application.Products.GetProductQuery;
 using RefactorThis.Application.Products.GetProductsByNameQuery;
 using RefactorThis.Application.Products.UpdateProductCommand;
+using ControllerBase = Microsoft.AspNetCore.Mvc.ControllerBase;
 
 namespace RefactorThis.Api.Controllers
 {
@@ -38,16 +39,15 @@ namespace RefactorThis.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(CreateProductCommand command, CancellationToken cancellationToken)
         {
-            var response = await mediator.Send(command, cancellationToken);
-
-            return Ok(response);
+           await mediator.Send(command, cancellationToken);
+           return Created();
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(UpdateProductCommand command, CancellationToken cancellationToken)
         {
-            var response = await mediator.Send(command, cancellationToken);
-            return Ok(response);
+            await mediator.Send(command, cancellationToken);
+            return NoContent();
         }
 
 
@@ -56,8 +56,8 @@ namespace RefactorThis.Api.Controllers
         {
             var command = new DeleteProductCommand(id);
             
-            var response = await mediator.Send(command, cancellationToken);
-            return Ok(response);
+            await mediator.Send(command, cancellationToken);
+            return NoContent();
         }
         
         [HttpGet("{productId}/options")]
@@ -71,24 +71,17 @@ namespace RefactorThis.Api.Controllers
         [HttpPost("{productId}/options")]
         public async Task<IActionResult>  CreateOption(CreateProductOptionCommand command, CancellationToken cancellationToken)
         {
-            var response = await mediator.Send(command, cancellationToken);
-            return Ok(response);
+            await mediator.Send(command, cancellationToken);
+            return Created();
         }
 
         [HttpDelete("{productId}/options/{id}")]
-        public async Task<IActionResult> DeleteOption(Guid id, Guid productId,
-            CancellationToken cancellationToken)
+        public async Task<IActionResult> DeleteOption(Guid productId,Guid id, CancellationToken cancellationToken)
         {
             var command = new DeleteProductOptionCommand(id, productId);
-            var response = await mediator.Send(command, cancellationToken);
-            return Ok(response);
+            await mediator.Send(command, cancellationToken);
+            return NoContent();
         }
-
-        // [HttpGet("test")]
-        // public Products GetTest()
-        // {
-        //     return new Products("test");
-        // }
 
         // [HttpGet("{id}")]
         // public Product Get(int id) {

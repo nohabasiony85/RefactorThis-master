@@ -1,11 +1,20 @@
 using RefactorThis.Application.Abstractions;
+using RefactorThis.Application.Abstractions.Data;
 
 namespace RefactorThis.Application.Products.CreateProductCommand;
 
-public class CreateProductCommandHandler : ICommandHandler<CreateProductCommand, Guid>
+public class CreateProductCommandHandler(ISqlDataConnectionFactory sqlDataConnectionFactory) : ICommandHandler<CreateProductCommand>
 {
-    public async Task<Guid> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+    public Task Handle(CreateProductCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var connection = sqlDataConnectionFactory.CreateConnection();
+        var cmd = connection.CreateCommand();
+
+        cmd.CommandText =
+            $"insert into Product values ({request.Name}', '{request.Description}', {request.Price}, {request.DeliveryPrice})";
+
+        cmd.ExecuteNonQuery();
+        return Task.CompletedTask;
     }
+    
 }

@@ -1,5 +1,6 @@
 using FluentValidation;
 using RefactorThis.Api.Middlewares;
+using RefactorThis.Application.Abstractions.Data;
 using RefactorThis.Application.Abstractions.Validators;
 using RefactorThis.Application.Products.CreateProductCommand;
 
@@ -20,6 +21,14 @@ builder.Services.AddMediatR(configuration =>
 });
 
 builder.Services.AddValidatorsFromAssembly(typeof(CreateProductCommandValidator).Assembly);
+
+builder.Services
+    .AddOptions<DatabaseConfig>()
+    .BindConfiguration("DatabaseConfig")
+    .ValidateDataAnnotations()
+    .ValidateOnStart();
+
+builder.Services.AddTransient<ISqlDataConnectionFactory, SqlDataConnectionFactory>();
 
 
 var app = builder.Build();

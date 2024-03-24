@@ -1,5 +1,4 @@
 using RefactorThis.Application.Abstractions;
-using RefactorThis.Application.Products.GetProductQuery;
 using RefactorThis.Domain.Entities;
 
 namespace RefactorThis.Application.Login.LoginQuery;
