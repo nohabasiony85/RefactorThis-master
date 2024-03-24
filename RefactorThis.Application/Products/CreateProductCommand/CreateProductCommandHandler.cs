@@ -4,9 +4,9 @@ using RefactorThis.Domain.Entities;
 
 namespace RefactorThis.Application.Products.CreateProductCommand;
 
-public class CreateProductCommandHandler : ICommandHandler<CreateProductCommand, Guid>
+public class CreateProductCommandHandler : ICommandHandler<CreateProductCommand>
 {
-    public async Task<Guid> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+    public Task Handle(CreateProductCommand request, CancellationToken cancellationToken)
     {
         var conn = Helpers.NewConnection<SqliteConnection>();
         conn.Open();
@@ -17,6 +17,5 @@ public class CreateProductCommandHandler : ICommandHandler<CreateProductCommand,
 
         conn.Open();
         cmd.ExecuteNonQuery();
-        throw new NotImplementedException();
     }
 }
