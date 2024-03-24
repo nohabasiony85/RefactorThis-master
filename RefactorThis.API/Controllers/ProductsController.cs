@@ -8,9 +8,9 @@ using RefactorThis.Application.Products.GetProductQuery;
 using RefactorThis.Application.Products.GetProductsByNameQuery;
 using RefactorThis.Application.Products.UpdateProductCommand;
 
-namespace RefactorThis.Api.Controllers.Products
+namespace RefactorThis.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/products")]
     [ApiController]
     public class ProductsController(IMediator mediator) : ControllerBase
     {
@@ -33,11 +33,8 @@ namespace RefactorThis.Api.Controllers.Products
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(CreateProductRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> Post(CreateProductCommand command, CancellationToken cancellationToken)
         {
-            var command =
-                new CreateProductCommand(request.Name, request.Description, request.Price, request.DeliveryPrice);
-
             var response = await mediator.Send(command, cancellationToken);
 
             return Ok(response);
