@@ -4,9 +4,9 @@ using RefactorThis.Application.Abstractions.Data;
 
 namespace RefactorThis.Application.Products.CreateProductCommand;
 
-public class CreateProductCommandHandler(ISqlDataConnectionFactory sqlDataConnectionFactory) : ICommandHandler<CreateProductCommand>
+public class CreateProductCommandHandler(ISqlDataConnectionFactory sqlDataConnectionFactory) : ICommandHandler<CreateProductCommand, bool>
 {
-    public Task Handle(CreateProductCommand request, CancellationToken cancellationToken)
+    public Task<bool> Handle(CreateProductCommand request, CancellationToken cancellationToken)
     {
         var connection = sqlDataConnectionFactory.CreateConnection();
         var command = connection.CreateCommand();
@@ -20,8 +20,9 @@ public class CreateProductCommandHandler(ISqlDataConnectionFactory sqlDataConnec
         command.Parameters.Add(new SqliteParameter("@Price", request.Price));
         command.Parameters.Add(new SqliteParameter("@DeliveryPrice", request.DeliveryPrice));
         
-        command.ExecuteNonQuery();
-        return Task.CompletedTask;
+        var result = command.ExecuteNonQuery();
+        return Task.FromResult(result > 0);
     }
+    
     
 }
