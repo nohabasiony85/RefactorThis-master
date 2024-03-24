@@ -20,5 +20,5 @@ public class SqlDataConnectionFactory(IOptions<DatabaseConfig> databaseConfig) :
 public class DatabaseConfig
 {
     [Required]
-    public string ConnectionString { get; set; }
+    public required string ConnectionString { get; set; }
 }

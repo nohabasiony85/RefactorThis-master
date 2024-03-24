@@ -1,16 +1,14 @@
-using Microsoft.Data.Sqlite;
 using RefactorThis.Application.Abstractions;
-using RefactorThis.Domain.Entities;
+using RefactorThis.Application.Abstractions.Data;
 
 namespace RefactorThis.Application.ProductOptions.DeleteProductOptionCommand;
 
-public class DeleteProductOptionCommandHandler : ICommandHandler<DeleteProductOptionCommand>
+public class DeleteProductOptionCommandHandler(ISqlDataConnectionFactory sqlDataConnectionFactory) : ICommandHandler<DeleteProductOptionCommand>
 {
     public Task Handle(DeleteProductOptionCommand request, CancellationToken cancellationToken)
     {
-        var conn = Helpers.NewConnection<SqliteConnection>();
-        conn.Open();
-        var cmd = conn.CreateCommand();
+        var connection = sqlDataConnectionFactory.CreateConnection();
+        var cmd = connection.CreateCommand();
         cmd.CommandText = $"delete from productoptions where id = '{request.Id}'";
         cmd.ExecuteReader();
 

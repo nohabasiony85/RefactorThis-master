@@ -1,7 +1,5 @@
-using Microsoft.Data.Sqlite;
 using RefactorThis.Application.Abstractions;
 using RefactorThis.Application.Abstractions.Data;
-using RefactorThis.Domain.Entities;
 
 namespace RefactorThis.Application.Products.CreateProductCommand;
 
