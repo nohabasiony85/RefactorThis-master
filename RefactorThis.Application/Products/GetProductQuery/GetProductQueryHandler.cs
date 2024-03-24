@@ -16,7 +16,8 @@ public class GetProductQueryHandler(ISqlDataConnectionFactory sqlDataConnectionF
             var command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
             command.CommandText = "SELECT * FROM products WHERE id = @Id";
-            command.Parameters.Add(new SqliteParameter("@Id", SqlDbType.UniqueIdentifier) { Value = request.Id });
+            
+            command.Parameters.Add(new SqliteParameter("@Id", request.Id));
 
             var reader = command.ExecuteReader();
 
