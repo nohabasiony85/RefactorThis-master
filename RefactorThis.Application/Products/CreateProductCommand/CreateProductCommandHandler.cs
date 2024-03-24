@@ -11,7 +11,7 @@ public class CreateProductCommandHandler(ISqlDataConnectionFactory sqlDataConnec
         var cmd = connection.CreateCommand();
 
         cmd.CommandText =
-            $"insert into Product values ({request.Name}', '{request.Description}', {request.Price}, {request.DeliveryPrice})";
+            $"insert into Products values ({request.Name}', '{request.Description}', {request.Price}, {request.DeliveryPrice})";
 
         cmd.ExecuteNonQuery();
         return Task.CompletedTask;
