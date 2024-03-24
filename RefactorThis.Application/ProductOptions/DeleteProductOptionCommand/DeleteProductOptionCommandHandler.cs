@@ -1,3 +1,4 @@
+using Microsoft.Data.Sqlite;
 using RefactorThis.Application.Abstractions;
 using RefactorThis.Application.Abstractions.Data;
 
@@ -8,9 +9,13 @@ public class DeleteProductOptionCommandHandler(ISqlDataConnectionFactory sqlData
     public Task Handle(DeleteProductOptionCommand request, CancellationToken cancellationToken)
     {
         var connection = sqlDataConnectionFactory.CreateConnection();
-        var cmd = connection.CreateCommand();
-        cmd.CommandText = $"delete from productoptions where id = '{request.Id}'";
-        cmd.ExecuteNonQuery();
+        var command = connection.CreateCommand();
+        
+        command.CommandText = "DELETE FROM ProductOptions WHERE id = @Id AND ProductId = @ProductId";
+        
+        command.Parameters.Add(new SqliteParameter("@Id", request.Id));
+        command.Parameters.Add(new SqliteParameter("@ProductId", request.ProductId));
+        command.ExecuteNonQuery();
 
         return Task.CompletedTask;
     }
