@@ -1,3 +1,4 @@
+using Microsoft.Data.Sqlite;
 using RefactorThis.Application.Abstractions;
 using RefactorThis.Application.Abstractions.Data;
 
@@ -9,12 +10,17 @@ public class CreateProductOptionCommandHandler(ISqlDataConnectionFactory sqlData
     public Task Handle(CreateProductOptionCommand request, CancellationToken cancellationToken)
     {
         var connection = sqlDataConnectionFactory.CreateConnection();
-        var cmd = connection.CreateCommand();
+        var command = connection.CreateCommand();
 
-        cmd.CommandText =
-            $"insert into productoptions ( productid, name, description) values ('{request.ProductId}', '{request.Name}', '{request.Description}')";
+        command.CommandText = "INSERT INTO ProductOptions (Id, productid, Name, Description) " +
+                              "VALUES (@Id, @ProductId, @Name, @Description)";
 
-        cmd.ExecuteNonQuery();
+        command.Parameters.Add(new SqliteParameter("@Id", Guid.NewGuid()));
+        command.Parameters.Add(new SqliteParameter("@ProductId", request.ProductId));
+        command.Parameters.Add(new SqliteParameter("@Name", request.Name));
+        command.Parameters.Add(new SqliteParameter("@Description", request.Description));
+        
+        command.ExecuteNonQuery();
         return Task.CompletedTask;
     }
 }

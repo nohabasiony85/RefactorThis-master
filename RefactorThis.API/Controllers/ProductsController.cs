@@ -76,23 +76,12 @@ namespace RefactorThis.Api.Controllers
         }
 
         [HttpDelete("{productId}/options/{id}")]
-        public async Task<IActionResult> DeleteOption(Guid productId,Guid id, CancellationToken cancellationToken)
+        public async Task<IActionResult> DeleteOption(Guid productId, Guid id, CancellationToken cancellationToken)
         {
             var command = new DeleteProductOptionCommand(id, productId);
             await mediator.Send(command, cancellationToken);
             return NoContent();
         }
-
-        // [HttpGet("{id}")]
-        // public Product Get(int id) {
-        //
-        //     var guid = new Guid(BitConverter.GetBytes(id));
-        //     var product = new Product(guid);
-        //     if (product.IsNew)
-        //         throw new Exception();
-        //
-        //     return product;
-        // }
 
         // [HttpPost]
         // public IActionResult Post(Product product)

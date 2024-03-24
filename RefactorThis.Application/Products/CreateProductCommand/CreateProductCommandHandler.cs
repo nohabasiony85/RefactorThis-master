@@ -19,7 +19,6 @@ public class CreateProductCommandHandler(ISqlDataConnectionFactory sqlDataConnec
         command.Parameters.Add(new SqliteParameter("@Description", request.Description));
         command.Parameters.Add(new SqliteParameter("@Price", request.Price));
         command.Parameters.Add(new SqliteParameter("@DeliveryPrice", request.DeliveryPrice));
-
         
         command.ExecuteNonQuery();
         return Task.CompletedTask;
