@@ -14,8 +14,6 @@ namespace RefactorThis.Domain.Entities {
 
         public decimal DeliveryPrice { get; init; } = deliveryPrice;
 
-        // [JsonIgnore] public bool IsNew { get; }
-
         // public Product()
         // {
         //     Id = Guid.NewGuid();

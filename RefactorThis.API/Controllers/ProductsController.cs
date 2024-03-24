@@ -10,6 +10,7 @@ using RefactorThis.Application.Products.DeleteProductCommand;
 using RefactorThis.Application.Products.GetProductQuery;
 using RefactorThis.Application.Products.GetProductsByNameQuery;
 using RefactorThis.Application.Products.UpdateProductCommand;
+using ControllerBase = Microsoft.AspNetCore.Mvc.ControllerBase;
 
 namespace RefactorThis.Api.Controllers
 {
@@ -39,15 +40,14 @@ namespace RefactorThis.Api.Controllers
         public async Task<IActionResult> Post(CreateProductCommand command, CancellationToken cancellationToken)
         {
            await mediator.Send(command, cancellationToken);
-
-            return Ok();
+           return Created();
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(UpdateProductCommand command, CancellationToken cancellationToken)
         {
             await mediator.Send(command, cancellationToken);
-            return Ok();
+            return NoContent();
         }
 
 
@@ -57,7 +57,7 @@ namespace RefactorThis.Api.Controllers
             var command = new DeleteProductCommand(id);
             
             await mediator.Send(command, cancellationToken);
-            return Ok();
+            return NoContent();
         }
         
         [HttpGet("{productId}/options")]
@@ -72,7 +72,7 @@ namespace RefactorThis.Api.Controllers
         public async Task<IActionResult>  CreateOption(CreateProductOptionCommand command, CancellationToken cancellationToken)
         {
             await mediator.Send(command, cancellationToken);
-            return Ok();
+            return Created();
         }
 
         [HttpDelete("{productId}/options/{id}")]
@@ -80,14 +80,8 @@ namespace RefactorThis.Api.Controllers
         {
             var command = new DeleteProductOptionCommand(id, productId);
             await mediator.Send(command, cancellationToken);
-            return Ok();
+            return NoContent();
         }
-
-        // [HttpGet("test")]
-        // public Products GetTest()
-        // {
-        //     return new Products("test");
-        // }
 
         // [HttpGet("{id}")]
         // public Product Get(int id) {
