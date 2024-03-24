@@ -4,9 +4,9 @@ using RefactorThis.Application.Abstractions.Data;
 
 namespace RefactorThis.Application.ProductOptions.DeleteProductOptionCommand;
 
-public class DeleteProductOptionCommandHandler(ISqlDataConnectionFactory sqlDataConnectionFactory) : ICommandHandler<DeleteProductOptionCommand>
+public class DeleteProductOptionCommandHandler(ISqlDataConnectionFactory sqlDataConnectionFactory) : ICommandHandler<DeleteProductOptionCommand, bool>
 {
-    public Task Handle(DeleteProductOptionCommand request, CancellationToken cancellationToken)
+    public Task<bool> Handle(DeleteProductOptionCommand request, CancellationToken cancellationToken)
     {
         var connection = sqlDataConnectionFactory.CreateConnection();
         var command = connection.CreateCommand();
@@ -15,8 +15,8 @@ public class DeleteProductOptionCommandHandler(ISqlDataConnectionFactory sqlData
         
         command.Parameters.Add(new SqliteParameter("@Id", request.Id));
         command.Parameters.Add(new SqliteParameter("@ProductId", request.ProductId));
-        command.ExecuteNonQuery();
+        var result =command.ExecuteNonQuery();
 
-        return Task.CompletedTask;
+        return Task.FromResult(result > 0);
     }
 }

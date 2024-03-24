@@ -1,4 +1,3 @@
-using NSubstitute;
 using RefactorThis.Application.Abstractions.Data;
 using RefactorThis.Application.Products.CreateProductCommand;
 
@@ -12,8 +11,7 @@ public class CreateProductTests
         200, 40);
     
     private readonly CreateProductCommandHandler _handler;
-
-
+    
     public CreateProductTests()
     {
         var sqlDataConnectionFactory = Substitute.For<ISqlDataConnectionFactory>();
