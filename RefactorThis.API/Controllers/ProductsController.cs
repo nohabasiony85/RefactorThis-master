@@ -38,16 +38,16 @@ namespace RefactorThis.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(CreateProductCommand command, CancellationToken cancellationToken)
         {
-            var response = await mediator.Send(command, cancellationToken);
+           await mediator.Send(command, cancellationToken);
 
-            return Ok(response);
+            return Ok();
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(UpdateProductCommand command, CancellationToken cancellationToken)
         {
-            var response = await mediator.Send(command, cancellationToken);
-            return Ok(response);
+            await mediator.Send(command, cancellationToken);
+            return Ok();
         }
 
 
@@ -56,8 +56,8 @@ namespace RefactorThis.Api.Controllers
         {
             var command = new DeleteProductCommand(id);
             
-            var response = await mediator.Send(command, cancellationToken);
-            return Ok(response);
+            await mediator.Send(command, cancellationToken);
+            return Ok();
         }
         
         [HttpGet("{productId}/options")]
@@ -71,8 +71,8 @@ namespace RefactorThis.Api.Controllers
         [HttpPost("{productId}/options")]
         public async Task<IActionResult>  CreateOption(CreateProductOptionCommand command, CancellationToken cancellationToken)
         {
-            var response = await mediator.Send(command, cancellationToken);
-            return Ok(response);
+            await mediator.Send(command, cancellationToken);
+            return Ok();
         }
 
         [HttpDelete("{productId}/options/{id}")]
