@@ -1,3 +1,5 @@
+using RefactorThis.Application.Abstractions;
+
 namespace RefactorThis.Application.Products.DeleteProductCommand;
 
-public record DeleteProductCommand() : Abstractions.ICommand<Guid>;
+public record DeleteProductCommand(Guid Id) : ICommand<Guid>;

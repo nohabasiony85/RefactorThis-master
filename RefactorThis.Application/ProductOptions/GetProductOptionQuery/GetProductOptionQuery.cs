@@ -3,4 +3,4 @@ using RefactorThis.Domain.Entities;
 
 namespace RefactorThis.Application.ProductOptions.GetProductOptionQuery;
 
-public record GetProductOptionQuery(int ProductOptionId) : IQuery<ProductOption>;
+public record GetProductOptionQuery(Guid ProductId) : IQuery<ProductOption>;
