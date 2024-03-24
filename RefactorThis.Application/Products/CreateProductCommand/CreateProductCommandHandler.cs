@@ -13,7 +13,7 @@ public class CreateProductCommandHandler : ICommandHandler<CreateProductCommand,
         var cmd = conn.CreateCommand();
 
         cmd.CommandText =
-            $"insert into Products where (id, name, desc, price, deliveryprice) values ({request.Name}', '{request.Description}', {request.Price}, {request.DeliveryPrice})";
+            $"insert into Products where (name, desc, price, deliveryprice) values ({request.Name}', '{request.Description}', {request.Price}, {request.DeliveryPrice})";
 
         conn.Open();
         cmd.ExecuteNonQuery();
