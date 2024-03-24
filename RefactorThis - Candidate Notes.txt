@@ -1,6 +1,18 @@
 Here's what I fixed:
-*
-*
+* Code Structure
+* Split classes and methods into smaller, more manageable ones.
+* Group related functionality into separate namespaces and folders.
+* Ensure proper naming conventions are followed for classes, methods, and variables. as well as ensure code is well-documented with clear comments explaining its 
+purpose and functionality.
+* Handle validation exceptions and provide meaningful error messages to users.
+* Identify duplicate code by extracting common functionality into reusable methods or classes.
+* Utilize inheritance, interfaces to promote code reuse and maintainability.
+* Use CQRS pattern to improve maintainability and extensibility.
+* Use Dependency Injection to refactor code into more modular and flexible structures.
+* 
+* Write unit tests to cover critical functionality and edge cases. ------ TODO
+* Use mocking frameworks to isolate units of code for testing. -------- TODO
+* Integrate automated testing into build pipeline for continuous validation. ---------- TODO
 ...
 
 Here's what I would like to talk about at the interview:
