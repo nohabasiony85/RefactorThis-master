@@ -79,8 +79,8 @@ namespace RefactorThis.Api.Controllers
         public async Task<IActionResult> DeleteOption(Guid productId,Guid id, CancellationToken cancellationToken)
         {
             var command = new DeleteProductOptionCommand(id, productId);
-            var response = await mediator.Send(command, cancellationToken);
-            return Ok(response);
+            await mediator.Send(command, cancellationToken);
+            return Ok();
         }
 
         // [HttpGet("test")]

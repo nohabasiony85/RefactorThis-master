@@ -1,11 +1,19 @@
+using Microsoft.Data.Sqlite;
 using RefactorThis.Application.Abstractions;
+using RefactorThis.Domain.Entities;
 
 namespace RefactorThis.Application.ProductOptions.DeleteProductOptionCommand;
 
-public class DeleteProductOptionCommandHandler : ICommandHandler<DeleteProductOptionCommand, Guid>
+public class DeleteProductOptionCommandHandler : ICommandHandler<DeleteProductOptionCommand>
 {
-    public Task<Guid> Handle(DeleteProductOptionCommand request, CancellationToken cancellationToken)
+    public Task Handle(DeleteProductOptionCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var conn = Helpers.NewConnection<SqliteConnection>();
+        conn.Open();
+        var cmd = conn.CreateCommand();
+        cmd.CommandText = $"delete from productoptions where id = '{request.Id}'";
+        cmd.ExecuteReader();
+
+        return Task.CompletedTask;
     }
 }

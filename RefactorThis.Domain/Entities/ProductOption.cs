@@ -18,9 +18,7 @@ namespace RefactorThis.Domain.Entities {
         public string Name { get; set; }
 
         public string Description { get; set; }
-
-        // [JsonIgnore] public bool IsNew { get; }
-        //
+        
         // public ProductOption()
         // {
         //     Id = Guid.NewGuid();
@@ -46,15 +44,6 @@ namespace RefactorThis.Domain.Entities {
         //     ProductId = Guid.Parse(rdr["ProductId"].ToString());
         //     Name = rdr["Name"].ToString();
         //     Description = (DBNull.Value == rdr["Description"]) ? null : rdr["Description"].ToString();
-        // }
-
-        // public void Delete()
-        // {
-        //     var conn = Helpers.NewConnection<SqliteConnection>();
-        //     conn.Open();
-        //     var cmd = conn.CreateCommand();
-        //     cmd.CommandText = $"deleet from productoptions where id = '{Id}' collate nocase";
-        //     cmd.ExecuteReader();
         // }
     }
 }
