@@ -17,5 +17,7 @@ public class CreateProductCommandHandler : ICommandHandler<CreateProductCommand>
 
         conn.Open();
         cmd.ExecuteNonQuery();
+        return Task.CompletedTask;
     }
+    
 }

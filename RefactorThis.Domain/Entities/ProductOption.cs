@@ -48,19 +48,6 @@ namespace RefactorThis.Domain.Entities {
         //     Description = (DBNull.Value == rdr["Description"]) ? null : rdr["Description"].ToString();
         // }
 
-        // public void Save()
-        // {
-        //     var conn = Helpers.NewConnection<SqliteConnection>();
-        //     conn.Open();
-        //     var cmd = conn.CreateCommand();
-        //
-        //     cmd.CommandText = IsNew
-        //         ? $"insert into productoptions (id, productid, name, description) values ('{Id}', '{ProductId}', '{Name}', '{Description}', '{IsNew}')"
-        //         : $"update productoptions set name = '{Name}', description = '{Description}' where id = '{Id}' collate nocase";
-        //
-        //     cmd.ExecuteNonQuery();
-        // }
-
         // public void Delete()
         // {
         //     var conn = Helpers.NewConnection<SqliteConnection>();

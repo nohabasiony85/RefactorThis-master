@@ -42,20 +42,6 @@ namespace RefactorThis.Domain.Entities {
         //     DeliveryPrice = decimal.Parse(rdr["DeliveryPrice"].ToString());
         // }
 
-        // public void Save()
-        // {
-        //     var conn = Helpers.NewConnection<SqliteConnection>();
-        //     conn.Open();
-        //     var cmd = conn.CreateCommand();
-        //
-        //     cmd.CommandText = IsNew
-        //         ? $"insert into Products where (id, name, desc, price, deliveryprice) values ('{Id}', '{Name}', '{Description}', {Price}, {DeliveryPrice})"
-        //         : $"update Products set name = '{Name}', description = '{Description}', price = {Price}, deliveryprice = {DeliveryPrice} where id = '{Id}' collate nocase";
-        //
-        //     conn.Open();
-        //     cmd.ExecuteNonQuery();
-        // }
-
         // public void Delete()
         // {
         //     foreach (var option in new ProductOptions(Id).Items)
