@@ -10,7 +10,7 @@ public class DeleteProductOptionCommandHandler(ISqlDataConnectionFactory sqlData
         var connection = sqlDataConnectionFactory.CreateConnection();
         var cmd = connection.CreateCommand();
         cmd.CommandText = $"delete from productoptions where id = '{request.Id}'";
-        cmd.ExecuteReader();
+        cmd.ExecuteNonQuery();
 
         return Task.CompletedTask;
     }
