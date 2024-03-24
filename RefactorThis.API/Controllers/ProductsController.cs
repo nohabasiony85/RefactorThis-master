@@ -76,8 +76,7 @@ namespace RefactorThis.Api.Controllers
         }
 
         [HttpDelete("{productId}/options/{id}")]
-        public async Task<IActionResult> DeleteOption(Guid id, Guid productId,
-            CancellationToken cancellationToken)
+        public async Task<IActionResult> DeleteOption(Guid productId,Guid id, CancellationToken cancellationToken)
         {
             var command = new DeleteProductOptionCommand(id, productId);
             var response = await mediator.Send(command, cancellationToken);
