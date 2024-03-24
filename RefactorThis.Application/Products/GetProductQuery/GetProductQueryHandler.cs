@@ -9,7 +9,7 @@ namespace RefactorThis.Application.Products.GetProductQuery;
 public class GetProductQueryHandler(ISqlDataConnectionFactory sqlDataConnectionFactory) : IQueryHandler<GetProductQuery, Product>
 {
     public Task<Product> Handle(GetProductQuery request, CancellationToken cancellationToken)
-    {    
+    {
         var product = new Product();
         using (var connection = sqlDataConnectionFactory.CreateConnection())
         {

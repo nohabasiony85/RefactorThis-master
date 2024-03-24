@@ -1,7 +1,25 @@
-﻿namespace RefactorThis.Domain.Entities {
-    public class Product
+﻿using RefactorThis.Domain.Abstractions;
+
+namespace RefactorThis.Domain.Entities {
+    public class Product :Entity
     {
-        public Guid Id { get; set; }
+        public Product(
+            Guid id,
+            string name,
+            string description,
+            decimal price,
+            decimal deliveryPrice)
+            : base(id)
+        {
+            Name = name;
+            Description = description;
+            Price = price;
+            DeliveryPrice = deliveryPrice;
+        }
+
+        public Product()
+        {
+        }
 
         public string Name { get; set; }
 
@@ -10,19 +28,5 @@
         public decimal Price { get; set; }
 
         public decimal DeliveryPrice { get; set; }
-        
-
-        // public void Delete()
-        // {
-        //     foreach (var option in new ProductOptions(Id).Items)
-        //         option.Delete();
-        //
-        //     var conn = Helpers.NewConnection<SqliteConnection>();
-        //     conn.Open();
-        //     var cmd = conn.CreateCommand();
-        //
-        //     cmd.CommandText = $"delete from Products where id = '{Id}' collate nocase";
-        //     cmd.ExecuteNonQuery();
-        // }
     }
 }
