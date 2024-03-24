@@ -1,19 +1,24 @@
-using Microsoft.AspNet.SignalR;
+using System.ComponentModel.DataAnnotations;
+using System.Data;
+using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Options;
 
 namespace RefactorThis.Application.Abstractions.Data;
 
 public class SqlDataConnectionFactory(IOptions<DatabaseConfig> databaseConfig) : ISqlDataConnectionFactory
 {
-    
-    public IConnection CreateConnection() {
+    public IDbConnection CreateConnection() {
         var connectionString =  databaseConfig.Value.ConnectionString;
-        //create and return connection object here
+        var connection = new SqliteConnection(connectionString);
+        
+        connection.Open();
 
+        return connection;
     }
 }
 
 public class DatabaseConfig
 {
+    [Required]
     public string ConnectionString { get; set; }
 }

@@ -1,7 +1,7 @@
-using Microsoft.AspNet.SignalR;
+using System.Data;
 
 namespace RefactorThis.Application.Abstractions.Data;
 
 public interface ISqlDataConnectionFactory {
-    IConnection CreateConnection();
+    IDbConnection CreateConnection();
 }
