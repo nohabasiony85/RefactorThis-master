@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RefactorThis.Application.Login.LoginQuery;
 
-namespace RefactorThis.Api.Controllers.Login;
+namespace RefactorThis.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
