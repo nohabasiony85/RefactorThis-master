@@ -16,7 +16,7 @@ public class GlobalExceptionHandlerMiddleware(RequestDelegate next)
         };
         return (code, JsonConvert.SerializeObject(new ApiResponse(exception.Message)));
     }
-    
+
     public async Task InvokeAsync(HttpContext context)
     {
         try
@@ -27,10 +27,10 @@ public class GlobalExceptionHandlerMiddleware(RequestDelegate next)
         {
             var response = context.Response;
             response.ContentType = "application/json";
-            
+
             // get the response code and message
             var (status, message) = GetResponse(exception);
-            response.StatusCode = (int) status;
+            response.StatusCode = (int)status;
             await response.WriteAsync(message);
         }
     }

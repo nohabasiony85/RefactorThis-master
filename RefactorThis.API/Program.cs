@@ -16,7 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(configuration =>
 {
     configuration.RegisterServicesFromAssembly(typeof(CreateProductCommand).Assembly);
-	
+
     configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
 });
 
