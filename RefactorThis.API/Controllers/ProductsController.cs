@@ -1,6 +1,4 @@
-﻿//using System.Security.Cryptography;
-
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RefactorThis.Application.ProductOptions.CreateProductOptionCommand;
 using RefactorThis.Application.ProductOptions.DeleteProductOptionCommand;
