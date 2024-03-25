@@ -9,15 +9,15 @@ public class CreateProductTests
         "test product",
         "test product description",
         200, 40);
-    
+
     private readonly CreateProductCommandHandler _handler;
-    
+
     public CreateProductTests()
     {
         var sqlDataConnectionFactory = Substitute.For<ISqlDataConnectionFactory>();
         _handler = new CreateProductCommandHandler(sqlDataConnectionFactory);
     }
-    
+
     [Fact]
     public async Task Handle_Should_ReturnSuccess_WhenProductCreated()
     {

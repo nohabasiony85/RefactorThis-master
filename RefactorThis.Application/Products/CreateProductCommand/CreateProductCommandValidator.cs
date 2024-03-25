@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace RefactorThis.Application.Products.CreateProductCommand;
 
-public class CreateProductCommandValidator :AbstractValidator<Products.CreateProductCommand.CreateProductCommand>
+public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
 {
     public CreateProductCommandValidator()
     {
@@ -11,5 +11,4 @@ public class CreateProductCommandValidator :AbstractValidator<Products.CreatePro
         RuleFor(p => p.Price).NotNull().NotEmpty().WithMessage("Product price is required");
         RuleFor(p => p.DeliveryPrice).NotNull().NotEmpty().WithMessage("Product delivery price is required");
     }
-    
 }

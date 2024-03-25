@@ -3,7 +3,8 @@ using RefactorThis.Application.Abstractions.Data;
 
 namespace RefactorThis.Application.Products.UpdateProductCommand;
 
-public class UpdateProductCommandHandler(ISqlDataConnectionFactory sqlDataConnectionFactory) : ICommandHandler<UpdateProductCommand>
+public class UpdateProductCommandHandler(ISqlDataConnectionFactory sqlDataConnectionFactory)
+    : ICommandHandler<UpdateProductCommand>
 {
     public Task Handle(UpdateProductCommand request, CancellationToken cancellationToken)
     {

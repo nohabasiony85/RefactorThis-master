@@ -6,7 +6,8 @@ using RefactorThis.Domain.Entities;
 
 namespace RefactorThis.Application.Products.GetProductsByNameQuery;
 
-public class GetProductsByNameQueryHandler(ISqlDataConnectionFactory sqlDataConnectionFactory) : IQueryHandler<GetProductsByNameQuery, Product>
+public class GetProductsByNameQueryHandler(ISqlDataConnectionFactory sqlDataConnectionFactory)
+    : IQueryHandler<GetProductsByNameQuery, Product>
 {
     public Task<Product> Handle(GetProductsByNameQuery request, CancellationToken cancellationToken)
     {
@@ -16,7 +17,7 @@ public class GetProductsByNameQueryHandler(ISqlDataConnectionFactory sqlDataConn
             var command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
             command.CommandText = "SELECT * FROM products WHERE name = @Name";
-            
+
             command.Parameters.Add(new SqliteParameter("@Name", request.Name));
 
             var reader = command.ExecuteReader();

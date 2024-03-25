@@ -19,7 +19,7 @@ public class CreateProductOptionCommandHandler(ISqlDataConnectionFactory sqlData
         command.Parameters.Add(new SqliteParameter("@ProductId", request.ProductId));
         command.Parameters.Add(new SqliteParameter("@Name", request.Name));
         command.Parameters.Add(new SqliteParameter("@Description", request.Description));
-        
+
         command.ExecuteNonQuery();
         return Task.CompletedTask;
     }
