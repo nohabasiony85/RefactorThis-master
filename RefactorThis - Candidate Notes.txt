@@ -7,15 +7,19 @@ purpose and functionality.
 * Handle validation exceptions and provide meaningful error messages to users.
 * Identify duplicate code by extracting common functionality into reusable methods or classes.
 * Utilize inheritance, interfaces to promote code reuse and maintainability.
-* Use CQRS pattern to improve maintainability and extensibility.
+* Use MediatR Library to route requests
+* Use FluentValidation for all request object validation
 * Use Dependency Injection to refactor code into more modular and flexible structures.
-* 
+* Use Repository Pattern to wrap the data access implementation.
+* Standardise how we report errors and validation failures and return correct HTTP codes by using Global Exception Handling Middleware.
+* Use record for immutability of DTOs .
 * Write unit tests to cover critical functionality and edge cases. ------ TODO
 * Use mocking frameworks to isolate units of code for testing. -------- TODO
 * Integrate automated testing into build pipeline for continuous validation. ---------- TODO
 ...
 
 Here's what I would like to talk about at the interview:
-*
+* Use Testcontainers which is a testing library that provides easy and lightweight APIs for bootstrapping integration tests 
+with real services wrapped in Docker containers.
 *
 ...

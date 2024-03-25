@@ -1,3 +1,6 @@
+using System.Net;
+using Xunit;
+
 namespace RefactorThis.Api.FunctionalTests;
 
 public class CreateProductOptionTests

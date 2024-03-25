@@ -12,8 +12,10 @@ public class GlobalExceptionHandlerMiddleware(RequestDelegate next)
         var code = exception switch
         {
             ValidationException or BadHttpRequestException => HttpStatusCode.BadRequest,
+            UnauthorizedAccessException => HttpStatusCode.Unauthorized,
             _ => HttpStatusCode.InternalServerError
         };
+
         return (code, JsonConvert.SerializeObject(new ApiResponse(exception.Message)));
     }
 
