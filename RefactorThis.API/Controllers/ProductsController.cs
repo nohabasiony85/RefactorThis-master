@@ -21,18 +21,14 @@ namespace RefactorThis.Api.Controllers
         [HttpGet("{name}")]
         public async Task<IActionResult> GetAllByName(string name, CancellationToken cancellationToken)
         {
-            var query = new GetProductsByNameQuery(name);
-
-            var response = await mediator.Send(query, cancellationToken);
+            var response = await mediator.Send(new GetProductsByNameQuery(name), cancellationToken);
             return Ok(response);
         }
 
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> Get(Guid id, CancellationToken cancellationToken)
         {
-            var query = new GetProductQuery(id);
-            var response = await mediator.Send(query, cancellationToken);
-
+            var response = await mediator.Send(new GetProductQuery(id), cancellationToken);
             return Ok(response);
         }
 
@@ -40,7 +36,7 @@ namespace RefactorThis.Api.Controllers
         public async Task<IActionResult> Post(CreateProductCommand command, CancellationToken cancellationToken)
         {
             var result  = await mediator.Send(command, cancellationToken);
-            return result ? Created() : NotFound();
+            return result ? Created() : BadRequest();
         }
 
         [HttpPut("{id}")]
@@ -54,17 +50,14 @@ namespace RefactorThis.Api.Controllers
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
         {
-            var command = new DeleteProductCommand(id);
-            
-            await mediator.Send(command, cancellationToken);
+            await mediator.Send(new DeleteProductCommand(id), cancellationToken);
             return NoContent();
         }
         
         [HttpGet("{productId}/options")]
         public async Task<IActionResult> GetOptions(Guid productId, CancellationToken cancellationToken)
         {
-            var query = new GetProductOptionQuery(productId);
-            var response = await mediator.Send(query, cancellationToken);
+            var response = await mediator.Send(new GetProductOptionQuery(productId), cancellationToken);
             return Ok(response);
         }
 
@@ -78,8 +71,7 @@ namespace RefactorThis.Api.Controllers
         [HttpDelete("{productId}/options/{id}")]
         public async Task<IActionResult> DeleteOption(Guid productId, Guid id, CancellationToken cancellationToken)
         {
-            var command = new DeleteProductOptionCommand(id, productId);
-            var result = await mediator.Send(command, cancellationToken);
+            var result = await mediator.Send(new DeleteProductOptionCommand(id, productId), cancellationToken);
             return result ? Ok() : NotFound();
         }
     }
