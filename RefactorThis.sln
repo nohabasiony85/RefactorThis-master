@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefactorThis.Application", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefactorThis.Application.UnitTests", "RefactorThis.Application.UnitTests\RefactorThis.Application.UnitTests.csproj", "{C200B279-0BAF-49A8-B77B-A1326AF277C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefactorThis.Aplication.IntegrationTest", "RefactorThis.Aplication.IntegrationTest\RefactorThis.Aplication.IntegrationTest.csproj", "{72DD2E32-63C2-4A9F-8165-F4F709693421}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefactorThis.Application.IntegrationTest", "RefactorThis.Application.IntegrationTest\RefactorThis.Application.IntegrationTest.csproj", "{72DD2E32-63C2-4A9F-8165-F4F709693421}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

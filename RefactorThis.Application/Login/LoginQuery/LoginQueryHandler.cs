@@ -4,7 +4,8 @@ using RefactorThis.Application.Abstractions.Data;
 
 namespace RefactorThis.Application.Login.LoginQuery;
 
-public class LoginQueryHandler(ISqlDataConnectionFactory sqlDataConnectionFactory) : IQueryHandler<LoginQuery, LoginQueryResponse>
+public class LoginQueryHandler(ISqlDataConnectionFactory sqlDataConnectionFactory)
+    : IQueryHandler<LoginQuery, LoginQueryResponse>
 {
     public async Task<LoginQueryResponse> Handle(LoginQuery request, CancellationToken cancellationToken)
     {
@@ -23,12 +24,9 @@ public class LoginQueryHandler(ISqlDataConnectionFactory sqlDataConnectionFactor
 
         var apiTokenExpiry = reader.GetString(reader.GetOrdinal("APITokenExpiry"));
 
-        // bug fix for default expiry dates from stackexchange
-        if (DateTime.TryParse(apiTokenExpiry, out var realExpiryDate))
-        {
-            // that's good
-        }
-
-        return DateTime.Now < realExpiryDate ? new LoginQueryResponse(true, "You are logged in and can use the API") : new LoginQueryResponse(false, "Your api token has expired, please ask Reliability for a new one to be assigned to you");
+        return DateTime.TryParse(apiTokenExpiry, out var realExpiryDate) && DateTime.Now < realExpiryDate
+            ? new LoginQueryResponse(true, "You are logged in and can use the API")
+            : new LoginQueryResponse(false,
+                "Your api token has expired, please ask Reliability for a new one to be assigned to you");
     }
 }
